@@ -1,0 +1,12 @@
+{
+  "question_messages": {
+    "everything_ok": "everything ok? (1) yes, (2) no, or (3) Español",
+    "name_validation": "what's your name?"
+  },
+  "error_messages": {
+    "interpret_error": "Sorry, I didn't understand. Please enter the corresponding number or the full text option. (1) yes, (2) no, or (3) Español"
+  },
+  "ending_messages": {
+    "bye": "thanks, bye!"
+  }
+}

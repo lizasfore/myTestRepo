@@ -1,7 +1,6 @@
 {
   "name": "mytestrepo",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test --reporter=allure-playwright",
@@ -26,5 +25,14 @@
     "@playwright/test": "^1.43.1",
     "@types/node": "^20.12.7",
     "allure-playwright": "^2.15.1"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "description": "",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "base": "^3.0.0",
+    "dotenv": "^16.4.5"
   }
 }
