@@ -41,7 +41,7 @@ test.beforeAll(async () => {
 
   const cookies = await context.cookies();
   const sessionCookie = cookies.find(
-    (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
+    async (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
   );
   console.log(sessionCookie!.value);
   cookieAuth = sessionCookie!.value;
