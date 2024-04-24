@@ -40,10 +40,10 @@ test.beforeAll(async () => {
   await loginPage.loginBtnClick();
 
   const cookies = await context.cookies();
-  await page.waitForTimeout(4000);
   const sessionCookie = cookies.find(
     (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
   );
+  await page.waitForTimeout(4000);
   cookieAuth = sessionCookie!.value;
 });
 
