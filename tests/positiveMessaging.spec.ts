@@ -43,10 +43,6 @@ test.beforeAll(async () => {
   const sessionCookie = cookies.find(
     (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
   );
-  if (!sessionCookie) {
-    console.error("Cookie '.AspNetCore.eAffirmCookieAuth' not found.");
-    return; // Or handle this scenario appropriately
-  }
   cookieAuth = sessionCookie!.value;
 });
 
