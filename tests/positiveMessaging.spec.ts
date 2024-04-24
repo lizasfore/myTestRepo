@@ -43,8 +43,8 @@ test.beforeAll(async () => {
   const sessionCookie = cookies.find(
     (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
   );
+  console.log(sessionCookie!.value);
   cookieAuth = sessionCookie!.value;
-  console.log(cookieAuth);
 });
 
 test("Initiate SMS sequence and send SMS", async () => {
