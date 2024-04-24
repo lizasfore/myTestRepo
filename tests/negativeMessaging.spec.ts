@@ -39,12 +39,22 @@ test.beforeAll(async () => {
   await loginPage.passwordFieldInput();
   await loginPage.loginBtnClick();
 
-  const cookies = await context.cookies();
-  const sessionCookie = cookies.find(
-    (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
-  );
-  await page.waitForTimeout(4000);
-  cookieAuth = sessionCookie!.value;
+  await expect
+    .poll(
+      async () => {
+        const cookies = await context.cookies();
+        const sessionCookie = cookies.find(
+          (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
+        );
+        cookieAuth = sessionCookie!.value;
+        // return cookies;
+      },
+      {
+        intervals: [1_000, 2_000, 3_000],
+        timeout: 60_000,
+      }
+    )
+    .toBe(true);
 });
 
 test("Initiate SMS sequence and send SMS", async () => {
