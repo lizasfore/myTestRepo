@@ -47,7 +47,7 @@ test.beforeAll(async () => {
           (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
         );
         cookieAuth = sessionCookie!.value;
-        // return cookies;
+        return cookieAuth;
       },
       {
         intervals: [1_000, 2_000, 3_000],
