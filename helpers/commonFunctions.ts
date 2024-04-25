@@ -35,6 +35,7 @@ export class CommFunc {
   }
 
   async showMenuBtnClick() {
+    await this.page.waitForSelector(".show-menu", { state: "visible" });
     await this.showMenuBtn.click();
   }
 
