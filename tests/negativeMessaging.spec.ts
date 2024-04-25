@@ -49,6 +49,7 @@ test.beforeAll(async () => {
 
 test("Initiate SMS sequence and send SMS", async () => {
   await test.step("Search SuperBill", async () => {
+    await commFunc.waitForPageIsLoaded();
     await mainPage.showMenuBtnClick();
     await mainPage.superBillsBtnClick();
     await mainPage.viewSuperBillsBtnClick();
