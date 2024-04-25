@@ -27,8 +27,8 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: "https://eaffirm-v5-staging.azurewebsites.net",
-    headless: true,
-    viewport: { width: 2048, height: 1080 },
+    headless: false,
+    viewport: { width: 2048, height: 1536 },
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
