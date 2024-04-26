@@ -136,6 +136,6 @@ test("Patient sends a message to the server (1 - yes) and 'Bentley'", async () =
   });
 });
 
-test.afterAll(async ({browser}) => {
-  await browser.close();
-});
+// test.afterAll(async ({browser}) => {
+//   await browser.close();
+// });
