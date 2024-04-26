@@ -34,6 +34,6 @@ export class LoginPage extends CommFunc {
 
   async loginBtnClick() {
     await this.loginBtn.click();
-    await this.waitForPageIsLoaded();
+    // await this.waitForPageIsLoaded();
   }
 }
