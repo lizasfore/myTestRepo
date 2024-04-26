@@ -1,2 +1,0 @@
-Expected respMessage received: everything ok? (1) yes, (2) no, or (3) Español
-Bentley

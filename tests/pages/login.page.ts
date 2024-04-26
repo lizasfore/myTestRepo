@@ -18,7 +18,7 @@ export class LoginPage extends CommFunc {
   }
 
   async navigateToLogin() {
-    console.log(`${process.env.BASE_APP_URL}/login`);
+    console.log(`${process.env.USER_PASSWORD}`);
     await this.page.goto(`${process.env.BASE_APP_URL}/login`);
   }
 
