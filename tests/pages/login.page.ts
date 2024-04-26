@@ -18,7 +18,7 @@ export class LoginPage extends CommFunc {
   }
 
   async navigateToLogin() {
-    await this.page.goto("/login");
+    await this.page.goto(`${process.env.BASE_APP_URL}/login`);
   }
 
   async emailFieldInput() {

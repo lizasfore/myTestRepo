@@ -35,8 +35,9 @@ export class CommFunc {
   }
 
   async showMenuBtnClick() {
-    await this.page.waitForSelector(".show-menu", { state: "visible" });
-    await this.showMenuBtn.click();
+    await this.showMenuBtn.first().waitFor({ state: "visible" });
+    await this.showMenuBtn.first().click();
+    await this.page.waitForTimeout(500);
   }
 
   async superBillsBtnClick() {

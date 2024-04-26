@@ -26,7 +26,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "https://eaffirm-v5-staging.azurewebsites.net",
+    // baseURL: "https://eaffirm-v5-staging.azurewebsites.net",
     headless: true,
     viewport: { width: 2048, height: 1536 },
 

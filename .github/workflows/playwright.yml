@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
@@ -24,7 +24,20 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npm run test
+        env:
+          BASE_APP_URL: ${{secrets.BASE_APP_URL}}
+          API_ENDPOINT_GET_MESSAGES: ${{secrets.API_ENDPOINT_GET_MESSAGES}}
+          APP_ENDPOINT_CPT_PAGE: ${{secrets.APP_ENDPOINT_CPT_PAGE}}
+          BASE_API_URL: ${{secrets.BASE_API_URL}}
+          USER_EMAIL: ${{secrets.USER_EMAIL}}
+          USER_PASSWORD: ${{secrets.USER_PASSWORD}}
+          PATIENT_PHONE: ${{secrets.PATIENT_PHONE}}
+          SERVER_PHONE: ${{secrets.SERVER_PHONE}}
+          AUTH_TOKEN: ${{secrets.AUTH_TOKEN}}
+          TWILIO_ACCOUNT_SID: ${{secrets.TWILIO_ACCOUNT_SID}}
+        run: |
+          echo $BASE_APP_URL
+          npm run test
 
       - name: Generate Allure Report
         if: always()
@@ -32,7 +45,7 @@ jobs:
 
       - name: Upload Allure Report as Artifact
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: allure-report/
