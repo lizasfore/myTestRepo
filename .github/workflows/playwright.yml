@@ -35,9 +35,7 @@ jobs:
           SERVER_PHONE: ${{secrets.SERVER_PHONE}}
           AUTH_TOKEN: ${{secrets.AUTH_TOKEN}}
           TWILIO_ACCOUNT_SID: ${{secrets.TWILIO_ACCOUNT_SID}}
-        run: |
-          echo $BASE_APP_URL
-          npm run test
+        run: npm run test
 
       - name: Generate Allure Report
         if: always()
@@ -65,3 +63,11 @@ jobs:
           allure_results: allure-results
           allure_history: github-pages/allure-history
           keep_reports: 20
+
+      # - name: Deploy report to Github Pages
+      # if: always()
+      # uses: peaceiris/actions-gh-pages@v4
+      # with:
+      #   github_token: ${{ secrets.TOKEN_GITHUB }}
+      #   publish_branch: github-pages
+      #   publish_dir: github-pages

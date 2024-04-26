@@ -16,7 +16,7 @@ export class testDataCreation {
   readonly memberIdField: Locator;
   readonly firstNameField: Locator;
   readonly lastNameField: Locator;
-  readonly DateOfBirthField: Locator;
+  readonly dateOfBirthField: Locator;
   readonly phoneField: Locator;
   readonly socialSecNumberField: Locator;
   readonly streetField: Locator;
@@ -44,7 +44,7 @@ export class testDataCreation {
     this.memberIdField = page.locator("#MemberId");
     this.firstNameField = page.locator("#PatientFirstName");
     this.lastNameField = page.locator("#PatientLastName");
-    this.DateOfBirthField = page.locator("#PatientDateOfBirth");
+    this.dateOfBirthField = page.locator("#PatientDateOfBirth");
     this.phoneField = page.locator("#PatientPhone");
     this.socialSecNumberField = page.locator("#PatientSocialSecurityNumber");
     this.streetField = page.locator("#PatientStreet");
@@ -61,87 +61,30 @@ export class testDataCreation {
     this.interval = 1000;
     // apiRequests = new ApiRequests();
   }
-
-  async createSuperBillsBtnClick() {
+  /**
+   * create SuperBill
+   * @returns A promise that resolves when creation of the SuperBill is successfull.
+   */
+  async createSuperBillForTests() {
     await this.createSuperBillsBtn.click();
-  }
-
-  async sbStatusFieldInput() {
     await this.sbStatusField.click();
     await this.statusClosedOption.click();
-  }
-
-  async totalFieldInput() {
-    await this.totalField.click();
     await this.totalField.fill("0.15");
-  }
-
-  async dateOfServiceFieldInput() {
-    await this.dateOfServiceField.click();
     await this.dateOfServiceField.fill("26.04.2024");
-  }
-
-  async memberIdFieldInput() {
-    await this.memberIdField.click();
-    await this.totalField.fill("COVIDxx");
-  }
-
-  async firstNameInput() {
-    await this.firstNameField.click();
+    await this.memberIdField.fill("COVIDxx");
     await this.firstNameField.fill("Elizabeth");
-  }
-
-  async lastNameInput() {
-    await this.lastNameField.click();
     await this.lastNameField.fill("Bekker");
-  }
-
-  async dateOfBirthFieldInput() {
-    await this.lastNameField.click();
-    await this.lastNameField.fill("Bekker");
-  }
-
-  async phoneFieldInput() {
-    await this.phoneField.click();
+    await this.dateOfBirthField.fill("19.06.2003");
     await this.phoneField.fill("+17545517768");
-  }
-
-  async socialSecNumberFieldInput() {
-    await this.socialSecNumberField.click();
-    await this.phoneField.fill("100-00-1111");
-  }
-
-  async streetFieldInput() {
-    await this.streetField.click();
+    await this.socialSecNumberField.fill("100-00-1111");
     await this.streetField.fill("Vilyamsa 81");
-  }
-
-  async cityFieldInput() {
-    await this.cityField.click();
     await this.cityField.fill("San Antonio");
-  }
-
-  async stateFieldInput() {
-    await this.stateField.click();
     await this.stateField.fill("TX");
-  }
-
-  async zipFieldInput() {
-    await this.zipField.click();
     await this.zipField.fill("79123");
-  }
-
-  async providerFieldInput() {
     await this.providerField.click();
     await this.providerOption.click();
-  }
-
-  async dataProviderFieldInput() {
     await this.dataProviderField.click();
     await this.dataProviderOption.click();
-  }
-
-  async createBtnClick() {
     await this.createBtn.click();
   }
 }

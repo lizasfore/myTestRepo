@@ -18,7 +18,6 @@ export class LoginPage extends CommFunc {
   }
 
   async navigateToLogin() {
-    console.log(`${process.env.USER_PASSWORD}`);
     await this.page.goto(`${process.env.BASE_APP_URL}/login`);
   }
 
@@ -35,6 +34,5 @@ export class LoginPage extends CommFunc {
   async loginBtnClick() {
     await this.loginBtn.click();
     await this.page.waitForTimeout(2000);
-    // await this.waitForPageIsLoaded();
   }
 }
