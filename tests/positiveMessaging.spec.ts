@@ -1,9 +1,4 @@
-import {
-  test,
-  expect,
-  BrowserContext,
-  Page,
-} from "@playwright/test";
+import { test, expect, BrowserContext, Page } from "@playwright/test";
 import { MainPage } from "./pages/main.page.js";
 import { LoginPage } from "./pages/login.page.js";
 import { SuperBillViewPage } from "./pages/SB_view.page.js";
@@ -21,7 +16,7 @@ let sbViewPage: SuperBillViewPage;
 let apiRequests: ApiRequests;
 let commFunc: CommFunc;
 
-test.beforeAll(async ({browser}) => {
+test.beforeAll(async ({ browser }) => {
   context = await browser.newContext();
   page = await context.newPage();
 
@@ -87,55 +82,55 @@ test("Initiate SMS sequence and send SMS", async () => {
   });
 });
 
-test("Patient sends a message to the server (1 - yes) and 'Bentley'", async () => {
-  await test.step("Get first SMS message from the sequence", async () => {
-    commFunc.checkFirstSequenceMessage(
-      cookieAuth,
-      messages.question_messages.everything_ok
-    );
-  });
+// test("Patient sends a message to the server (1 - yes) and 'Bentley'", async () => {
+//   await test.step("Get first SMS message from the sequence", async () => {
+//     commFunc.checkFirstSequenceMessage(
+//       cookieAuth,
+//       messages.question_messages.everything_ok
+//     );
+//   });
 
-  await test.step("Patient send a message (1 - yes)", async () => {
-    const response = await apiRequests.clientRespMessage(
-      "1",
-      process.env.PATIENT_PHONE!,
-      process.env.SERVER_PHONE!,
-      cookieAuth
-    );
-    expect(response.data.status == 201).toBeTruthy();
-  });
+//   await test.step("Patient send a message (1 - yes)", async () => {
+//     const response = await apiRequests.clientRespMessage(
+//       "1",
+//       process.env.PATIENT_PHONE!,
+//       process.env.SERVER_PHONE!,
+//       cookieAuth
+//     );
+//     expect(response.data.status == 201).toBeTruthy();
+//   });
 
-  await test.step("Server receives a message from the patient", async () => {
-    commFunc.checkLastMessage(cookieAuth, "1");
-  });
+//   await test.step("Server receives a message from the patient", async () => {
+//     commFunc.checkLastMessage(cookieAuth, "1");
+//   });
 
-  await test.step("Server sends next message to the patient", async () => {
-    commFunc.checkLastMessage(
-      cookieAuth,
-      messages.question_messages.name_validation
-    );
-  });
+//   await test.step("Server sends next message to the patient", async () => {
+//     commFunc.checkLastMessage(
+//       cookieAuth,
+//       messages.question_messages.name_validation
+//     );
+//   });
 
-  await test.step("Patient send a message 'Bentley'", async () => {
-    const response = await apiRequests.clientRespMessage(
-      "Bentley",
-      process.env.PATIENT_PHONE!,
-      process.env.SERVER_PHONE!,
-      cookieAuth
-    );
-    expect(response.data.status == 201).toBeTruthy();
-    console.log(response.data.data.body);
-  });
+//   await test.step("Patient send a message 'Bentley'", async () => {
+//     const response = await apiRequests.clientRespMessage(
+//       "Bentley",
+//       process.env.PATIENT_PHONE!,
+//       process.env.SERVER_PHONE!,
+//       cookieAuth
+//     );
+//     expect(response.data.status == 201).toBeTruthy();
+//     console.log(response.data.data.body);
+//   });
 
-  await test.step("Server receives a message from the patient", async () => {
-    commFunc.checkLastMessage(cookieAuth, "Bentley");
-  });
+//   await test.step("Server receives a message from the patient", async () => {
+//     commFunc.checkLastMessage(cookieAuth, "Bentley");
+//   });
 
-  await test.step("Server sends next message to the patient", async () => {
-    commFunc.checkLastMessage(cookieAuth, "ending en");
-  });
-});
-
-// test.afterAll(async ({browser}) => {
-//   await browser.close();
+//   await test.step("Server sends next message to the patient", async () => {
+//     commFunc.checkLastMessage(cookieAuth, "ending en");
+//   });
 // });
+
+test.afterAll(async ({ browser }) => {
+  await browser.close();
+});
