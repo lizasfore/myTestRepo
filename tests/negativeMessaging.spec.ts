@@ -1,9 +1,4 @@
-import {
-  test,
-  expect,
-  BrowserContext,
-  Page,
-} from "@playwright/test";
+import { test, expect, BrowserContext, Page } from "@playwright/test";
 import { MainPage } from "./pages/main.page.js";
 import { LoginPage } from "./pages/login.page.js";
 import { SuperBillViewPage } from "./pages/SB_view.page.js";
@@ -22,6 +17,7 @@ let apiRequests: ApiRequests;
 let commFunc: CommFunc;
 
 test.beforeAll(async ({ browser }) => {
+  await page.waitForTimeout(2000);
   context = await browser.newContext();
   page = await context.newPage();
 
@@ -117,6 +113,6 @@ test("Patient sends a message to the server 'hello'", async () => {
   });
 });
 
-test.afterAll(async ({browser}) => {
+test.afterAll(async ({ browser }) => {
   await browser.close();
 });

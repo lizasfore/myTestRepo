@@ -17,6 +17,7 @@ let apiRequests: ApiRequests;
 let commFunc: CommFunc;
 
 test.beforeAll(async ({ browser }) => {
+  await page.waitForTimeout(2000);s
   context = await browser.newContext();
   page = await context.newPage();
 
