@@ -40,7 +40,7 @@ test.beforeAll(async ({ browser }) => {
   const sessionCookie = cookies.find(
     async (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
   );
-  console.log(sessionCookie!.value);
+  // console.log(sessionCookie!.value);
   cookieAuth = sessionCookie!.value;
 });
 
@@ -117,6 +117,6 @@ test("Patient sends a message to the server 'hello'", async () => {
   });
 });
 
-// test.afterAll(async ({browser}) => {
-//   await browser.close();
-// });
+test.afterAll(async ({browser}) => {
+  await browser.close();
+});

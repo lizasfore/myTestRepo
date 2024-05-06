@@ -35,7 +35,7 @@ test.beforeAll(async ({ browser }) => {
   const sessionCookie = cookies.find(
     async (c) => c.name === ".AspNetCore.eAffirmCookieAuth"
   );
-  console.log(sessionCookie!.value);
+  // console.log(sessionCookie!.value);
   cookieAuth = sessionCookie!.value;
 });
 
@@ -119,7 +119,7 @@ test("Patient sends a message to the server (1 - yes) and 'Bentley'", async () =
       cookieAuth
     );
     expect(response.data.status == 201).toBeTruthy();
-    console.log(response.data.data.body);
+    // console.log(response.data.data.body);
   });
 
   await test.step("Server receives a message from the patient", async () => {

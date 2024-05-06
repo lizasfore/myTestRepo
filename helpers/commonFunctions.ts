@@ -67,7 +67,7 @@ export class CommFunc {
           respMessage.to == process.env.PATIENT_PHONE &&
           respMessage.from == process.env.SERVER_PHONE
         ) {
-          console.log("Expected respMessage received:", respMessage.body);
+          // console.log("Expected respMessage received:", respMessage.body);
           return true;
         }
 
@@ -104,7 +104,7 @@ export class CommFunc {
           respMessage.status === "received" &&
           response.data.status === 200
         ) {
-          console.log("Expected respMessage received:", respMessage.body);
+          // console.log("Expected respMessage received:", respMessage.body);
           return true;
         }
 
