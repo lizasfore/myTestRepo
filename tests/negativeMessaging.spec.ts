@@ -117,6 +117,6 @@ test("Patient sends a message to the server 'hello'", async () => {
   });
 });
 
-test.afterAll(async ({browser}) => {
-  await browser.close();
-});
+// test.afterAll(async ({browser}) => {
+//   await browser.close();
+// });
