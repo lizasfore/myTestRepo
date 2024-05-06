@@ -54,37 +54,37 @@ test("Initiate SMS sequence and send SMS", async () => {
     await expect(sbViewPage.searchResult).toBeVisible();
   });
 
-  // await test.step("Reset SuperBill", async () => {
-  //   await sbViewPage.resetBtnClick();
-  //   await expect
-  //     .poll(
-  //       async () => {
-  //         const response = await sbViewPage.getSequenceStatus();
-  //         return response;
-  //       },
-  //       {
-  //         intervals: [1000, 2000],
-  //         timeout: 10000,
-  //       }
-  //     )
-  //     .toContain("Open");
-  // });
+  await test.step("Reset SuperBill", async () => {
+    await sbViewPage.resetBtnClick();
+    await expect
+      .poll(
+        async () => {
+          const response = await sbViewPage.getSequenceStatus();
+          return response;
+        },
+        {
+          intervals: [1000, 2000],
+          timeout: 10000,
+        }
+      )
+      .toContain("Open");
+  });
 
-  // await test.step("Initiate sequence and send SMS", async () => {
-  //   await sbViewPage.initiateSmsSequenceBtnClick();
-  //   await expect
-  //     .poll(
-  //       async () => {
-  //         const response = await sbViewPage.getSequenceStatus();
-  //         return response;
-  //       },
-  //       {
-  //         intervals: [1000, 2000],
-  //         timeout: 10000,
-  //       }
-  //     )
-  //     .toContain("InProgress");
-  // });
+  await test.step("Initiate sequence and send SMS", async () => {
+    await sbViewPage.initiateSmsSequenceBtnClick();
+    await expect
+      .poll(
+        async () => {
+          const response = await sbViewPage.getSequenceStatus();
+          return response;
+        },
+        {
+          intervals: [1000, 2000],
+          timeout: 10000,
+        }
+      )
+      .toContain("InProgress");
+  });
 });
 
 // test("Patient sends a message to the server 'hello'", async () => {
