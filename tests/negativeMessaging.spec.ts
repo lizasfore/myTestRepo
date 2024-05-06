@@ -87,36 +87,36 @@ test("Initiate SMS sequence and send SMS", async () => {
   });
 });
 
-// test("Patient sends a message to the server 'hello'", async () => {
-//   await test.step("Get first SMS message from the sequence", async () => {
-//     commFunc.checkFirstSequenceMessage(
-//       cookieAuth,
-//       messages.question_messages.everything_ok
-//     );
-//   });
+test("Patient sends a message to the server 'hello'", async () => {
+  await test.step("Get first SMS message from the sequence", async () => {
+    commFunc.checkFirstSequenceMessage(
+      cookieAuth,
+      messages.question_messages.everything_ok
+    );
+  });
 
-//   await test.step("Patient send a message 'hello'", async () => {
-//     const response = await apiRequests.clientRespMessage(
-//       "hello",
-//       process.env.PATIENT_PHONE!,
-//       process.env.SERVER_PHONE!,
-//       cookieAuth
-//     );
-//     expect(response.data.status == 201).toBeTruthy();
-//   });
+  await test.step("Patient send a message 'hello'", async () => {
+    const response = await apiRequests.clientRespMessage(
+      "hello",
+      process.env.PATIENT_PHONE!,
+      process.env.SERVER_PHONE!,
+      cookieAuth
+    );
+    expect(response.data.status == 201).toBeTruthy();
+  });
 
-//   await test.step("Server receives a message from the patient", async () => {
-//     commFunc.checkLastMessage(cookieAuth, "hello");
-//   });
+  await test.step("Server receives a message from the patient", async () => {
+    commFunc.checkLastMessage(cookieAuth, "hello");
+  });
 
-//   await test.step("Server sends next message to the patient", async () => {
-//     commFunc.checkLastMessage(
-//       cookieAuth,
-//       messages.error_messages.interpret_error
-//     );
-//   });
-// });
+  await test.step("Server sends next message to the patient", async () => {
+    commFunc.checkLastMessage(
+      cookieAuth,
+      messages.error_messages.interpret_error
+    );
+  });
+});
 
-// test.afterAll(async ({browser}) => {
-//   await browser.close();
-// });
+test.afterAll(async ({browser}) => {
+  await browser.close();
+});
