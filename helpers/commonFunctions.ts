@@ -41,7 +41,10 @@ export class CommFunc {
   }
 
   async superBillsBtnClick() {
-    await this.superBillsBtn.click();
+    if (!this.superBillsBtn) {
+      await this.showMenuBtn.click();
+    }
+      await this.superBillsBtn.click();
   }
 
   async viewSuperBillsBtnClick() {

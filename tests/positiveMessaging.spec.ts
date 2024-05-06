@@ -49,87 +49,87 @@ test("Initiate SMS sequence and send SMS", async () => {
     await expect(sbViewPage.searchResult).toBeVisible();
   });
 
-  // await test.step("Reset SuperBill", async () => {
-  //   await sbViewPage.resetBtnClick();
-  //   await expect
-  //     .poll(
-  //       async () => {
-  //         const response = await sbViewPage.getSequenceStatus();
-  //         return response;
-  //       },
-  //       {
-  //         intervals: [1000, 2000],
-  //         timeout: 10000,
-  //       }
-  //     )
-  //     .toContain("Open");
-  // });
+  await test.step("Reset SuperBill", async () => {
+    await sbViewPage.resetBtnClick();
+    await expect
+      .poll(
+        async () => {
+          const response = await sbViewPage.getSequenceStatus();
+          return response;
+        },
+        {
+          intervals: [1000, 2000],
+          timeout: 10000,
+        }
+      )
+      .toContain("Open");
+  });
 
-  // await test.step("Initiate sequence and send SMS", async () => {
-  //   await sbViewPage.initiateSmsSequenceBtnClick();
-  //   await expect
-  //     .poll(
-  //       async () => {
-  //         const response = await sbViewPage.getSequenceStatus();
-  //         return response;
-  //       },
-  //       {
-  //         intervals: [1000, 2000],
-  //         timeout: 10000,
-  //       }
-  //     )
-  //     .toContain("InProgress");
-  // });
+  await test.step("Initiate sequence and send SMS", async () => {
+    await sbViewPage.initiateSmsSequenceBtnClick();
+    await expect
+      .poll(
+        async () => {
+          const response = await sbViewPage.getSequenceStatus();
+          return response;
+        },
+        {
+          intervals: [1000, 2000],
+          timeout: 10000,
+        }
+      )
+      .toContain("InProgress");
+  });
 });
 
-// test("Patient sends a message to the server (1 - yes) and 'Bentley'", async () => {
-//   await test.step("Get first SMS message from the sequence", async () => {
-//     commFunc.checkFirstSequenceMessage(
-//       cookieAuth,
-//       messages.question_messages.everything_ok
-//     );
-//   });
+test("Patient sends a message to the server (1 - yes) and 'Bentley'", async () => {
+  await test.step("Get first SMS message from the sequence", async () => {
+    commFunc.checkFirstSequenceMessage(
+      cookieAuth,
+      messages.question_messages.everything_ok
+    );
+  });
 
-//   await test.step("Patient send a message (1 - yes)", async () => {
-//     const response = await apiRequests.clientRespMessage(
-//       "1",
-//       process.env.PATIENT_PHONE!,
-//       process.env.SERVER_PHONE!,
-//       cookieAuth
-//     );
-//     expect(response.data.status == 201).toBeTruthy();
-//   });
+  await test.step("Patient send a message (1 - yes)", async () => {
+    const response = await apiRequests.clientRespMessage(
+      "1",
+      process.env.PATIENT_PHONE!,
+      process.env.SERVER_PHONE!,
+      cookieAuth
+    );
+    expect(response.data.status == 201).toBeTruthy();
+  });
 
-//   await test.step("Server receives a message from the patient", async () => {
-//     commFunc.checkLastMessage(cookieAuth, "1");
-//   });
+  await test.step("Server receives a message from the patient", async () => {
+    commFunc.checkLastMessage(cookieAuth, "1");
+  });
 
-//   await test.step("Server sends next message to the patient", async () => {
-//     commFunc.checkLastMessage(
-//       cookieAuth,
-//       messages.question_messages.name_validation
-//     );
-//   });
+  await test.step("Server sends next message to the patient", async () => {
+    commFunc.checkLastMessage(
+      cookieAuth,
+      messages.question_messages.name_validation
+    );
+  });
 
-//   await test.step("Patient send a message 'Bentley'", async () => {
-//     const response = await apiRequests.clientRespMessage(
-//       "Bentley",
-//       process.env.PATIENT_PHONE!,
-//       process.env.SERVER_PHONE!,
-//       cookieAuth
-//     );
-//     expect(response.data.status == 201).toBeTruthy();
-//     console.log(response.data.data.body);
-//   });
+  await test.step("Patient send a message 'Bentley'", async () => {
+    const response = await apiRequests.clientRespMessage(
+      "Bentley",
+      process.env.PATIENT_PHONE!,
+      process.env.SERVER_PHONE!,
+      cookieAuth
+    );
+    expect(response.data.status == 201).toBeTruthy();
+    console.log(response.data.data.body);
+  });
 
-//   await test.step("Server receives a message from the patient", async () => {
-//     commFunc.checkLastMessage(cookieAuth, "Bentley");
-//   });
+  await test.step("Server receives a message from the patient", async () => {
+    commFunc.checkLastMessage(cookieAuth, "Bentley");
+  });
 
-//   await test.step("Server sends next message to the patient", async () => {
-//     commFunc.checkLastMessage(cookieAuth, "ending en");
-//   });
-// });
+  await test.step("Server sends next message to the patient", async () => {
+    commFunc.checkLastMessage(cookieAuth, "ending en");
+  });
+});
 
 test.afterAll(async ({ browser }) => {
   await browser.close();
